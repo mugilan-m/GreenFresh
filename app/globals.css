@@ -19,3 +19,14 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.bg-custom-gradient {
+  background: linear-gradient(rgb(236, 220, 255), rgb(255, 255, 255));
+}
+
+.bg-image{
+  background-image: url('https://freshcart77.myshopify.com/cdn/shop/files/background-newsletter.jpg?v=1731480650%27');
+  background-repeat: no-repeat;
+  width: 100%;
+  width: 1300px;
+}
