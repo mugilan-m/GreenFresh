@@ -6,23 +6,34 @@ import { Card, CardBody, CardFooter, Image } from "@heroui/react";
 import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useProductStore } from "../store";
+import toast from "react-hot-toast";
 
 function ProductListPage(data:any) {
-    const {  addWishlist} = useProductStore((state) => state);
+    const {  addWishlist,Addtocart} = useProductStore((state) => state);
     const router = useRouter();
     console.log("ProductListPagedata--->",data.data[0]);
+    const handleButtonClick = (title: string) => {
+      toast.success(`${title}   added to cart `);
+  
+      setTimeout(() => {
+        router.push("/cart");
+      }, 1000);
+    };
   return (
     <>
-          {data.data.map((item:any) => (
+          {data.data.map((item:Product) => (
         <Card
           key={item.id}
           isPressable
           shadow="sm"
-          onPress={() => router.push(`/PDP/${item.id}`)}
+          
         >
-          <CardBody className="overflow-visible p-0 ">
+          <CardBody className="overflow-visible p-0 "
+           onClick={() => router.push(`/PDP/${item.id}`)}
+          >
+            
             {item.images && item.images.length > 0 ? (
-              <Image
+              <img
                 className="w-full object-contain h-[340px]"
                 src={item.images[0]}
                 alt={item.title}
@@ -33,12 +44,14 @@ function ProductListPage(data:any) {
             )}
           </CardBody>
           <CardFooter className=" flex items-center justify-center text-small">
-            <h1 className=" text-2xl leading-8  ford-colormoderatek h-16 line-clamp-2 font-semibold">
+            <h1 className=" text-2xl leading-8  ford-colormoderatek h-16 line-clamp-2 font-semibold"
+            onClick={() => router.push(`/PDP/${item.id}`)}
+            >
               {item.title}
             </h1>
           </CardFooter>
           <span className="font-medium text-2xl leading-8   ml-5">
-            ${item.price}
+          ₹{item.price}
           </span>
           <div className="flex gap-5">
             <span className="font-normal text-base leading-6  text-ford-text-moderate(default) ml-5  ">
@@ -112,13 +125,19 @@ function ProductListPage(data:any) {
           </div>
 
           <div className="mt-10  gap-10 mb-4">
-            <Button
-              onPress={() => router.push(`/PDP/${item.id}`)}
-              className="m-2 mr-2 p-4"
+            <button
+              // onPress={() => router.push(`/PDP/${item.id}`)}
+              onClick={() => {
+                Addtocart(item);
+                handleButtonClick(item?.title); 
+              
+              }}
+              
+              className="p-2  rounded-lg bg-green-600 text-white"
               color="primary"
             >
               Add to cart
-            </Button>
+            </button>
             <button
             onClick={() => {
               addWishlist(item)

@@ -1,17 +1,23 @@
 "use client";
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Rating from "@/app/Components/Rating";
 import { FaStar } from "react-icons/fa";
 import Image from "next/image";
+
 //import Form from "next/form"; //  No such thing
 import { Chip, Input } from "@heroui/react";
+import { useProductStore } from "@/app/store";
+import toast from "react-hot-toast";
 
 function PDPPage() {
   const pathname = usePathname();
   const idString = pathname.split("/").pop();
+  const router = useRouter();
+
   const [quantity, setQuantity] = useState<number>(1);
+  const { Addtocart } = useProductStore((state) => state);
   if (!idString) {
     return <div>Invalid Product ID </div>;
   }
@@ -24,28 +30,34 @@ function PDPPage() {
     console.log("products", products);
   } catch (error) {
     console.error("Error parsing ProductData from localStorage:", error);
-    products = null; 
+    products = null;
   }
-  const filteredProducts = products ? products.filter((product: { id: number; }) => product.id === productId) : [];
+  const filteredProducts = products
+    ? products.filter((product: { id: number }) => product.id === productId)
+    : [];
 
-  console.log("filteredProducts", filteredProducts[0].images[0]);
+  console.log("filteredProducts ->", filteredProducts[0]);
   const product = products[productId - 1];
-  const tags = filteredProducts[0]?.tags?.map((tag: string, index: number) => (
-    <div key={index}>
-      <Chip>{tag}</Chip>
-    </div>
-  )) || null;
+  const tags =
+    filteredProducts[0]?.tags?.map((tag: string, index: number) => (
+      <div key={index}>
+        <Chip>{tag}</Chip>
+      </div>
+    )) || null;
 
-  const handleChange = (event: { target: { setCustomValidity: (arg0: string) => void; value: string; }; }) => {
-    event.target.setCustomValidity(`only ${product?.stock} products  are available  `);
+  const handleChange = (event: {
+    target: { setCustomValidity: (arg0: string) => void; value: string };
+  }) => {
+    event.target.setCustomValidity(
+      `only ${product?.stock} products  are available  `
+    );
     const value = parseInt(event.target.value, 10);
     setQuantity(value);
   };
 
-
-  const handleSubmit = async (event: { preventDefault: () => void; }) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    console.log(quantity)
+    console.log(quantity);
 
     // const formData = {
     //   productId: productId,
@@ -70,16 +82,25 @@ function PDPPage() {
     //   console.error('Error:', error);
     // }
   };
+  const handleButtonClick = (title: string) => {
+    toast.success(`${title}   added to cart `);
 
+    setTimeout(() => {
+      router.push("/cart");
+    }, 2000);
+  };
 
   return (
     <div>
       <div className="container mx-auto flex flex-row gap-10">
         <div className="w-[670px] h-[470px] ">
-      <Link href='/' className="font-serif text-xl font-bold ml-[-30px] "> Back</Link>
-          <Image
+          <Link href="/ProductPage" className="font-serif text-xl font-bold ml-[-30px] ">
+            {" "}
+            Back
+          </Link>
+          <img
             className="w-[800] mt-[-80px] object-contain h-[840px] drop-shadow-md shadow-sm"
-            src={filteredProducts[0].images[0]}
+            src={filteredProducts[0]?.images[0]}
             alt="image"
             width={300}
             height={200}
@@ -127,7 +148,7 @@ function PDPPage() {
             </p>
           </div>
           <div className="m-3 flex gap-3">
-            <Image
+            <img
               src="https://static.thenounproject.com/png/952397-512.png"
               width={30}
               height={30}
@@ -157,7 +178,8 @@ function PDPPage() {
           </div>
           <div className="flex m-4 ">
             <p>
-              {filteredProducts[0]?.availabilityStatus} {filteredProducts[0]?.stock} Remaining
+              {filteredProducts[0]?.availabilityStatus}{" "}
+              {filteredProducts[0]?.stock} Remaining
             </p>{" "}
           </div>
           <div className="flex m-4 gap-3">{tags}</div>
@@ -171,9 +193,8 @@ function PDPPage() {
                 max={filteredProducts[0]?.stock}
                 pattern="[0-9]*"
                 aria-label="QTY"
-                value={quantity.toString()}
+                value="2"
                 onChange={handleChange}
-
               />
 
               <button
@@ -207,7 +228,14 @@ function PDPPage() {
                       ></path>
                     </svg>
                   </span>
-                  <span>Add to cart </span>{" "}
+                  <span
+                    onClick={() => {
+                      Addtocart(filteredProducts[0]);
+                      handleButtonClick(filteredProducts[0]?.title);
+                    }}
+                  >
+                    Add to cart{" "}
+                  </span>{" "}
                 </div>
               </button>
             </div>

@@ -22,7 +22,7 @@ const Rating = () => {
         id: reviews.length + 1,
         rating,
         text: review,
-        user: 'Anonymous', // In a real app, this would be the logged-in user
+        user: 'Anonymous', 
       };
       setReviews([...reviews, newReview]);
       setRating(0);

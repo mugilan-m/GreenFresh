@@ -3,7 +3,7 @@ import React from 'react'
 
 function error() {
   return (
-    <div>error</div>
+    <div> Cart is currently unaviable </div>
   )
 }
 
