@@ -103,6 +103,7 @@ function Page() {
       <Link href='/' className="m-5 mb-10 font-serif text-xl font-bold"> Back</Link>
       </div>
     <div className="gap-12 grid grid-cols-2 sm:grid-cols-4">
+
      <ProductListPage data={data}/>
     </div>
     </div>

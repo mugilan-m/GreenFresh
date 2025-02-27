@@ -36,7 +36,9 @@ export default function RootLayout({
         {children}
        <div className="font-bold"> <Toaster position="top-right"  /></div>
 
+        <div className="mb-[-10px]">
         <Footer/>
+        </div>
         </div>
 
       </body>

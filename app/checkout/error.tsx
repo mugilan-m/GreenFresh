@@ -6,7 +6,7 @@ function error() {
     <div className="container mx-auto  m-20 ">
       <h1 className="font-semibold text-3xl  mb-5  ">
         {" "}
-        Cart is currently unavailable.{" "}
+        Checkout is currently unavailable.{" "}
       </h1>
 
       <button

@@ -2,11 +2,18 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
+
 function Header() {
   const loggedin = false;
+  const pathname = usePathname()
+  const isCheckoutPage = pathname === "/checkout";
   return (
+
     <header className="bg-custom-gradient px-4 py-3">
-      <div className="flex justify-between items-center">
+      {
+        !isCheckoutPage ? 
+        <div className="flex justify-between items-center">
         <Link href="/">
           <Image
             className="dark:invert"
@@ -145,7 +152,12 @@ function Header() {
           )}
         </nav>
       </div>
+      : <></>
+      }
+    
     </header>
+          
+    
   );
 }
 

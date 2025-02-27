@@ -4,6 +4,7 @@ import Link from "next/link";
 function HomeBanner() {
   return (
     <div className=" m-0 mx-auto container flex">
+      
       <div>
         <div className="absolute mt-[130px] ml-[50px] w-[600px] h-[400px] space-x-1 space-y-4">
         <span className="pt-10 text-gray-500 ml-1" >

@@ -39,10 +39,16 @@ function Page() {
     //     <p>Your cart is empty.</p>
     //   )}
     // </div>
-    <div>
+    <div className='flex'>
+    <div className='w-[60%] bg-red'>
       <Productcard data={addtocart}/>
-      <OrderSummary/>
     </div>
+    <div className='w-[38%] mt-20 relative'>
+    <OrderSummary data={addtocart}/>
+
+    </div>
+    </div>
+
   );
 }
 

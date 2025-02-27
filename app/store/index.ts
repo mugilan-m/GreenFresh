@@ -71,6 +71,7 @@ interface StoreState {
   addWishlist: (product: Product) => void;
   removeWishlist: (id: number) => void;
   Addtocart: (product: Product) => void;
+  Addquantity :(product:Product)=>void;
   removecart: (id: number) => void;
   fetchData: () => Promise<void>;
 }
@@ -144,6 +145,32 @@ export const useProductStore = create(
         set((state) => ({
           addtocart: state.addtocart.filter((product) => product.id !== id),
         })),
+
+      Addquantity: (product: Product) =>
+          set((state) => {
+            const alreadyInCart = state.addtocart.find(
+              (item) => item.id === product.id
+            );
+  
+            if (!alreadyInCart) {
+              // If the product is not in the cart, add it with a quantity of 1
+              return {
+                addtocart: [...state.addtocart, { ...product, quantity: 1 }],
+              };
+            } else {
+              // If the product is already in the cart, increase its quantity
+              const updatedCart = state.addtocart.map((item) =>
+                item.id === product.id
+                  ? { ...item, quantity: item.quantity + 1 }
+                  : item
+              );
+  
+              return { addtocart: updatedCart };
+            }
+          }),
+
+
+
 
       fetchData: async () => {
         set({ loading: true, error: null });

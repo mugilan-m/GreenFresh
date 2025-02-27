@@ -3,7 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ['cdn.dummyjson.com','static.thenounproject.com','freshcart77.myshopify.com'],
+   remotePatterns: [
+     { protocol: 'https', hostname: 'cdn.dummyjson.com' },
+     { protocol: 'https', hostname: 'static.thenounproject.com' },
+     { protocol: 'https', hostname: 'freshcart77.myshopify.com' },
+   ],
   },
 };
 
