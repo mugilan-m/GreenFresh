@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { useProductStore } from "../store";
+import Image from "next/image";
 
 const Page: React.FC = () => {
   const { whislist,Addtocart ,removeWishlist} = useProductStore((state) => state);
@@ -14,8 +15,11 @@ const Page: React.FC = () => {
   Back
 </Link>
 <div className="mx-auto container flex  justify-center ">
-<img
+<Image
 src="https://school-store.in/Design/images/wishlist-empty.jpg" className="w-[60%] h-50"
+width={500}
+height={500}
+alt="images"
 />
 
 </div>
@@ -42,11 +46,11 @@ src="https://school-store.in/Design/images/wishlist-empty.jpg" className="w-[60%
             return (
               <div className="w-2/6   max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700" key={index}>
     <Link href="#">
-      <img
+      <Image
                 className="w-full object-contain h-[340px]"
                 src={item.images[0]}
                 alt={item.title}
-                width="100%"
+                width={340}
               />
     </Link>
     <div className="px-5 pb-5">

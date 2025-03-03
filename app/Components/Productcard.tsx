@@ -24,9 +24,10 @@ if (cartData.length <= 0) {
         Back
       </Link>
       <div className="mx-auto container flex  justify-center ">
-        <img
+        <Image
           src="https://mir-s3-cdn-cf.behance.net/projects/404/95974e121862329.Y3JvcCw5MjIsNzIxLDAsMTM5.png"
           className="w-[50%] h-50 rounded-3xl"
+          alt="images"
         />
       </div>
       <div className="flex justify-center absolute mt-[-60px] ml-[37%]">

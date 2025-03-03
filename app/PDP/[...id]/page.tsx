@@ -4,10 +4,11 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Rating from "@/app/Components/Rating";
 import { FaStar } from "react-icons/fa";
-//import Form from "next/form"; //  No such thing
+// import Form from "next/form"; //  No such thing
 import { Chip, Input } from "@heroui/react";
 import { useProductStore } from "@/app/store";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 function PDPPage() {
   const pathname = usePathname();
@@ -98,7 +99,7 @@ function PDPPage() {
             {" "}
             Back
           </Link>
-          <img
+          <Image
             className="w-[800] mt-[-80px] object-contain h-[840px] drop-shadow-md shadow-sm"
             src={filteredProducts[0]?.images[0]}
             alt="image"
@@ -136,7 +137,7 @@ function PDPPage() {
             </p>
           </div>
           <div className="m-3 flex gap-3">
-            <img
+            <Image
               src="https://static.thenounproject.com/png/952397-512.png"
               width={30}
               height={30}

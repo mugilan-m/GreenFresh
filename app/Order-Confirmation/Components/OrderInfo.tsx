@@ -2,6 +2,7 @@
 import { useProductStore } from "@/app/store";
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 function OrderInfo() {
   const { addtocart } = useProductStore((state) => state);
@@ -39,7 +40,7 @@ function OrderInfo() {
         <div className="w-full flex flex-col gap-5" key={index}>
         <div className="grid grid-cols-12 w-full px-6 pb-5 justify-start items-center md:gap-8 gap-3 border-b border-gray-300">
           <div className="lg:col-span-4 md:col-span-5 col-span-12 justify-start items-center md:gap-6 gap-3 md:pb-5 flex md:flex-row flex-col">
-            <img
+            <Image
               className="w-[100px] h-[100px]"
               src={item.images[0]}
               alt="Story Book image"

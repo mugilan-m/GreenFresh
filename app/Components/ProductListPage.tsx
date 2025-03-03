@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useProductStore } from "../store";
 import toast from "react-hot-toast";
 import { Product } from ".";
-
+import Image from "next/image";
 function ProductListPage(data:any) {
     const {  addWishlist,Addtocart} = useProductStore((state) => state);
     const router = useRouter();
@@ -33,7 +33,7 @@ function ProductListPage(data:any) {
           >
             
             {item.images && item.images.length > 0 ? (
-              <img
+              <Image
                 className="w-full object-contain h-[340px]"
                 src={item.images[0]}
                 alt={item.title}

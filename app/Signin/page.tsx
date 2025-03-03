@@ -2,13 +2,14 @@ import Form from 'next/form'
 import Link from 'next/link'
 import React from 'react'
 import { SiginFormData } from '../action'
+import Image from "next/image";
 
 function page() {
   return (
 <section className="bg-gray-50 dark:bg-gray-900 ">
   <div className="flex flex-col items-center justify-center px-6 py-8  mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-          <img className="w-40 h-30 mr-2" src="https://static1.squarespace.com/static/6348419bc7daf073f761786c/t/66294ac74cb7b26d9e1d4dc9/1713982151290/GreenFresh+Logo+-+Stacked+%28Green+%2B+Black%29.png?format=1500w" alt="logo" />
+          <Image className="w-40 h-30 mr-2" src="https://static1.squarespace.com/static/6348419bc7daf073f761786c/t/66294ac74cb7b26d9e1d4dc9/1713982151290/GreenFresh+Logo+-+Stacked+%28Green+%2B+Black%29.png?format=1500w" alt="logo" />
            
       </a>
       <div className="w-full  mb-[10px] p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">

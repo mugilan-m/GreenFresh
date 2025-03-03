@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { Image } from "@heroui/react";
 import ProductListPage from "../Components/ProductListPage";
 import { useSearchParams } from 'next/navigation'
@@ -97,7 +97,6 @@ function Page() {
   }
   console.log("data", data[0]);
   return (
-    <Suspense>
     <div className="m-3">
       <div className="w-20 400 h-20">
       <Link href='/' className="m-5 mb-10 font-serif text-xl font-bold"> Back</Link>
@@ -107,7 +106,6 @@ function Page() {
      <ProductListPage data={data}/>
     </div>
     </div>
-    </Suspense>
 
   );
 }

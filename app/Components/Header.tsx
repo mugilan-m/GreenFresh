@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 function Header() {
   const loggedin = false;
@@ -16,10 +17,12 @@ function Header() {
       {!isPage ? (
         <div className="flex justify-between items-center">
           <Link href="/">
-            <img
+            <Image
               className="dark:invert w-[200px] h-[70px] object-contain"
               src="https://static1.squarespace.com/static/6348419bc7daf073f761786c/t/66294ac74cb7b26d9e1d4dc9/1713982151290/GreenFresh+Logo+-+Stacked+%28Green+%2B+Black%29.png?format=1500w"
               alt="Next.js logo"
+              width={200}
+              height={70}
             />
           </Link>
           <div className="md:hidden"></div>
