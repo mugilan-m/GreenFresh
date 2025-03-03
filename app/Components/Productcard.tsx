@@ -5,11 +5,9 @@ import { useProductStore } from "../store";
 import { Product } from ".";
 
 
-interface ProductCardProps {
-  data: Product[];
-}
 
-export default function Productcard({ data }: ProductCardProps) {
+
+export default function Productcard({ data }: { data: Product[] }) {
   const { removecart,Addquantity } = useProductStore((state) => state);
 
   const cartData = data;
