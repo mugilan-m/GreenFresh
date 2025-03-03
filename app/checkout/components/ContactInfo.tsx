@@ -2,7 +2,7 @@
 import { Input } from "@heroui/react";
 import Form from "next/form";
 import React from "react";
-import { ContactFormData } from "../action";
+import { ContactFormData } from "../../action";
 import Payment from "./Payment";
 function ContactInfo() {
   return (

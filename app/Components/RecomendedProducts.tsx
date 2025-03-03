@@ -3,7 +3,7 @@ import React from 'react'
 function RecomendedProducts() {
   return (
     <div> <div className="hidden xl:mt-8 xl:block">
-    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">People also bought</h3>
+    <h3 className="text-3xl font-bold text-gray-900 dark:text-white">People also bought</h3>
     <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
       <div className="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <a href="#" className="overflow-hidden rounded">

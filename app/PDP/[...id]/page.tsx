@@ -17,7 +17,7 @@ function PDPPage() {
   const router = useRouter();
 
   const [quantity, setQuantity] = useState<number>(1);
-  const { Addtocart } = useProductStore((state) => state);
+  const { Addtocart,addWishlist } = useProductStore((state) => state);
   if (!idString) {
     return <div>Invalid Product ID </div>;
   }
@@ -90,6 +90,8 @@ function PDPPage() {
     }, 2000);
   };
 
+
+
   return (
     <div>
       <div className="container mx-auto flex flex-row gap-10">
@@ -109,20 +111,8 @@ function PDPPage() {
         <div className="w-[600px] h-[600px] drop-shadow-md shadow-sm  ">
           <h1 className="text-xl m-3 font-semibold leading-[22px] tracking-[-0.36px] text-[#262A33] flex gap-3">
             {filteredProducts[0]?.title}
-            <svg
-              className="min-w-4 fill-ford-fill-interactive fill-red-600"
-              data-testid="wishlist-added-icon"
-              fill="none"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                className="fill-ford-fill-interactive hover:fill-skyview-1200"
-                d="M22.0619 3.09682C20.8052 1.83178 19.1415 1.14036 17.3657 1.14036C15.59 1.14036 13.9212 1.8369 12.6645 3.10194L12.0081 3.76263L11.3416 3.0917C10.0849 1.82666 8.41093 1.125 6.63523 1.125C4.86461 1.125 3.19576 1.82154 1.94412 3.08146C0.687392 4.3465 -0.00457183 6.02639 0.000516142 7.81383C0.000516142 9.60127 0.697568 11.276 1.9543 12.5411L11.5095 22.1595C11.6418 22.2926 11.8199 22.3643 11.9929 22.3643C12.1658 22.3643 12.3439 22.2978 12.4762 22.1646L22.0518 12.5616C23.3085 11.2965 24.0005 9.61664 24.0005 7.82919C24.0055 6.04175 23.3187 4.36186 22.0619 3.09682Z"
-              ></path>
-            </svg>
+
+
           </h1>
           <p className="m-3 flex gap-2">
             {" "}
@@ -181,6 +171,27 @@ function PDPPage() {
               {filteredProducts[0]?.availabilityStatus}{" "}
               {filteredProducts[0]?.stock} Remaining
             </p>{" "}
+          </div>
+          <div className="f m-3">
+          <button className="bg-green-900 p-3  text-white rounded-md flex gap-4 font-bold  " 
+          onClick={()=>addWishlist(filteredProducts[0])}
+          >Add to wishlist
+          {/* <svg
+              className="min-w-4 fill-ford-fill-interactive fill-gray-600"
+              data-testid="wishlist-added-icon"
+              fill="none"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                className="fill-ford-fill-interactive hover:fill-skyview-1200"
+                d="M22.0619 3.09682C20.8052 1.83178 19.1415 1.14036 17.3657 1.14036C15.59 1.14036 13.9212 1.8369 12.6645 3.10194L12.0081 3.76263L11.3416 3.0917C10.0849 1.82666 8.41093 1.125 6.63523 1.125C4.86461 1.125 3.19576 1.82154 1.94412 3.08146C0.687392 4.3465 -0.00457183 6.02639 0.000516142 7.81383C0.000516142 9.60127 0.697568 11.276 1.9543 12.5411L11.5095 22.1595C11.6418 22.2926 11.8199 22.3643 11.9929 22.3643C12.1658 22.3643 12.3439 22.2978 12.4762 22.1646L22.0518 12.5616C23.3085 11.2965 24.0005 9.61664 24.0005 7.82919C24.0055 6.04175 23.3187 4.36186 22.0619 3.09682Z"
+              ></path>
+            </svg> */}
+            </button>
+
           </div>
           <div className="flex m-4 gap-3">{tags}</div>
           <form onSubmit={handleSubmit}>

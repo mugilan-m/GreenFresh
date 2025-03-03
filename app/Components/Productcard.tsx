@@ -15,6 +15,33 @@ export default function Productcard(data: any) {
 const Removequantity =()=>{
   alert("removed")
 }
+if (cartData.length <= 0) {
+  return (
+    <div className="mx-auto container justify-center align-middle">
+      <Link className="bg-blue-400 p-3 rounded-2xl w-25 " href="/ProductPage">
+        Back
+      </Link>
+      <div className="mx-auto container flex  justify-center ">
+        <img
+          src="https://mir-s3-cdn-cf.behance.net/projects/404/95974e121862329.Y3JvcCw5MjIsNzIxLDAsMTM5.png"
+          className="w-[50%] h-50 rounded-3xl"
+        />
+      </div>
+      <div className="flex justify-center absolute mt-[-60px] ml-[37%]">
+        <Link
+          href="/ProductPage"
+          className="text-white font-bold ml-2 p-3  rounded-lg  shadow-blue-800 bg-black"
+        >
+          Shop New products 
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+const handleQuantityInput =()=>{
+
+}
   
   return (
     <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
@@ -48,7 +75,7 @@ const Removequantity =()=>{
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
                       </svg>
                     </button>
-                    <input type="text" id="counter-input" data-input-counter className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white" placeholder="" value={item?.quantity} required />
+                    <input type="text" id="counter-input" data-input-counter className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white" placeholder="" value={quantityvalue} onChange={()=>handleQuantityInput(event.target.value)} required />
                     <button type="button" id="increment-button" data-input-counter-increment="counter-input" className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                     onClick={()=>Addquantity(item)}
                     >
