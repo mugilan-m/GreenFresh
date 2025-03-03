@@ -1,9 +1,9 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { useProductStore } from "../store";
 import Link from "next/link";
+import { Product } from ".";
 
-function OrderSummary(props:any) {  
+function OrderSummary(props: { data: Product }) {  
     const cartData = props.data;
     console.log("order summary cartData->",cartData);
     const [SubTotal, setSubTotal] = useState<string | null>(null);
@@ -84,7 +84,7 @@ function OrderSummary(props:any) {
               {" "}
               or{" "}
             </span>
-            <a
+            <Link
               href="/"
               title=""
               className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500"
@@ -105,7 +105,7 @@ function OrderSummary(props:any) {
                   d="M19 12H5m14 0-4 4m4-4-4-4"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
 

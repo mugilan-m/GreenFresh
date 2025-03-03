@@ -2,11 +2,11 @@
 
 "use client";
 import React from "react";
-import { Card, CardBody, CardFooter, Image } from "@heroui/react";
-import { Button } from "@heroui/react";
+import { Card, CardBody, CardFooter } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useProductStore } from "../store";
 import toast from "react-hot-toast";
+import { Product } from ".";
 
 function ProductListPage(data:any) {
     const {  addWishlist,Addtocart} = useProductStore((state) => state);

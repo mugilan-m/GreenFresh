@@ -24,7 +24,7 @@ function HomeBanner() {
             </span><br/></div>
         <div>
         <Link href='/ProductPage' className="mt-30 bg-green-500 text-white p-3 rounded-lg">
-                Get Best Deal ->
+                Get Best Deal 
               </Link>
         </div>
         </div>

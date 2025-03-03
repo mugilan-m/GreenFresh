@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react";
-import {Card, CardBody, Image, Button, Slider} from "@heroui/react";
-import OrderSummary from "./OrderSummary";
+import React from "react";
+import {Image} from "@heroui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useProductStore } from "../store";
-export default function Productcard(data: any) {
-    const router = useRouter();
+import { Product } from ".";
+
+
+interface ProductCardProps {
+  data: Product[];
+}
+
+export default function Productcard({ data }: ProductCardProps) {
   const { removecart,Addquantity } = useProductStore((state) => state);
 
-  const cartData = data.data;
+  const cartData = data;
   console.log("cartData->",cartData);
-  var SubTotal =0;
+  let SubTotal =0;
 
-const Removequantity =()=>{
-  alert("removed")
-}
+// const Removequantity =()=>{
+//   alert("removed")
+// }
 if (cartData.length <= 0) {
   return (
     <div className="mx-auto container justify-center align-middle">
@@ -39,9 +43,7 @@ if (cartData.length <= 0) {
   );
 }
 
-const handleQuantityInput =()=>{
 
-}
   
   return (
     <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
@@ -75,7 +77,7 @@ const handleQuantityInput =()=>{
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
                       </svg>
                     </button>
-                    <input type="text" id="counter-input" data-input-counter className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white" placeholder="" value={quantityvalue} onChange={()=>handleQuantityInput(event.target.value)} required />
+                    <input type="text" id="counter-input" data-input-counter className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white" placeholder="" value={item?.quantity}  required />
                     <button type="button" id="increment-button" data-input-counter-increment="counter-input" className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                     onClick={()=>Addquantity(item)}
                     >

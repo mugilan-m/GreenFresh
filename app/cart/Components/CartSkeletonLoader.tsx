@@ -1,5 +1,4 @@
 "use client"
-import {Card, Skeleton} from "@heroui/react";
 export default  function CartSkeletonLoader() {
 
   return (

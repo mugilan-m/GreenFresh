@@ -4,8 +4,6 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Rating from "@/app/Components/Rating";
 import { FaStar } from "react-icons/fa";
-import Image from "next/image";
-
 //import Form from "next/form"; //  No such thing
 import { Chip, Input } from "@heroui/react";
 import { useProductStore } from "@/app/store";

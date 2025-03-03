@@ -3,7 +3,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { v4 as uuidv4 } from "uuid";
-const count = 0;
 interface Todo {
   id: string;
   description: string;
@@ -77,7 +76,7 @@ interface StoreState {
 }
 export const useProductStore = create(
   persist<StoreState>(
-    (set, get) => ({
+    (set) => ({
       count: 0,
       todos: [],
       whislist: [],

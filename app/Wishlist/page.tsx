@@ -2,9 +2,8 @@
 import Link from "next/link";
 import React from "react";
 import { useProductStore } from "../store";
-import Image from "next/image";
 
-function page() {
+const Page: React.FC = () => {
   const { whislist,Addtocart ,removeWishlist} = useProductStore((state) => state);
 
 
@@ -95,4 +94,4 @@ src="https://school-store.in/Design/images/wishlist-empty.jpg" className="w-[60%
   );
 }
 
-export default page;
+export default Page;

@@ -4,7 +4,6 @@ import React from "react";
 import { useProductStore } from "../store";
 import Productcard from "../Components/Productcard";
 import OrderSummary from "../Components/OrderSummary";
-import Link from "next/link";
   function Page() {
   const { addtocart } = useProductStore((state) => state);
 
