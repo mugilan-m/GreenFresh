@@ -19,7 +19,7 @@ export default function RootLayout({
         {children}
         </div>
       <div className="w-[30%] ">
-        <OrderSummary/>
+        <OrderSummary data={[]}/>
       </div>
     </div>
   );

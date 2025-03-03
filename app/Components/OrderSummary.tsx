@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Product } from ".";
 
-function OrderSummary(props: { data: Product[] }) {  
-    const cartData = props.data;
+function OrderSummary({ data }: { data: Product[] }) {  
+    const cartData = data;
     console.log("order summary cartData->",cartData);
     const [SubTotal, setSubTotal] = useState<string | null>(null);
 
