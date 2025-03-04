@@ -5,7 +5,7 @@ import React from "react";
 
 function ProductCatagory() {
   return (
-    <div>
+    <section>
       <div>
       <h1 className="text-3xl font-bold">Shop Popular Categories</h1>
       <div>
@@ -52,7 +52,7 @@ function ProductCatagory() {
         <h1 className="text-3xl font-bold">New Products</h1>
       </div>
       <div className="flex justify-between bg-slate-100 w-[107%] h-[190px] rounded-xl">
-        <h1 className=" font-bold   ">
+        <div className=" font-bold   ">
           <h1 className="p-5 text-2xl">
               One Stop Grocery Shop
               </h1>
@@ -64,7 +64,7 @@ function ProductCatagory() {
                   Get Discount on Share
                 </Link>
 </div>
-        </h1>
+        </div>
         <div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 160" height="160" width="512">
 <g opacity="0.35">
@@ -143,7 +143,7 @@ function ProductCatagory() {
 </svg>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

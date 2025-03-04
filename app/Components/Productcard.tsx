@@ -28,6 +28,8 @@ if (cartData.length <= 0) {
           src="https://mir-s3-cdn-cf.behance.net/projects/404/95974e121862329.Y3JvcCw5MjIsNzIxLDAsMTM5.png"
           className="w-[50%] h-50 rounded-3xl"
           alt="images"
+          width={50}
+          height={50}
         />
       </div>
       <div className="flex justify-center absolute mt-[-60px] ml-[37%]">
@@ -63,7 +65,7 @@ if (cartData.length <= 0) {
             <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
               <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                 <Link href={`/PDP/${item.id}`}  className="shrink-0 md:order-1">
-                  <Image className="h-[180px] w-[180px] dark:hidden" src={item.images[0]} alt="imac image"  />
+                  <Image className="h-[180px] w-[180px] dark:hidden" src={item.images[0]} alt="imac image" width={180} height={180}  />
                 </Link>
   
                 <label htmlFor="counter-input" className="sr-only">Choose quantity:</label>
@@ -76,7 +78,7 @@ if (cartData.length <= 0) {
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
                       </svg>
                     </button>
-                    <input type="text" id="counter-input" data-input-counter className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white" placeholder="" value={item?.quantity}  required />
+                    <input type="text" id="counter-input" data-input-counter className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white" placeholder="" value={item?.quantity} readOnly required />
                     <button type="button" id="increment-button" data-input-counter-increment="counter-input" className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                     onClick={()=>Addquantity(item)}
                     >
@@ -86,7 +88,7 @@ if (cartData.length <= 0) {
                     </button>
                   </div>
                   <div className="text-end md:order-4 md:w-32">
-                  <h1 className="text-2xl leading-8 font-bold text-gray-900 dark:text-white">₹{(item.price * item.quantity)}</h1>
+                  <h1 className="text-2xl leading-8 font-bold text-gray-900 dark:text-white">₹{parseInt((item.price * item.quantity).toString(),10)}</h1>
                     <span className=" font-normal text-sm leading-5    text-gray-900 dark:text-white">₹{item.price} each</span>
                   </div>
                 </div>

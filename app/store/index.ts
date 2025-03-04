@@ -191,7 +191,7 @@ export const useProductStore = create(
       },
     }),
     {
-      name: "count-store",
+      name: "product-store",
       storage: createJSONStorage(() => localStorage),
     }
   )

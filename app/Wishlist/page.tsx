@@ -42,21 +42,22 @@ alt="images"
 
       <div className="m-2 flex flex-wrap gap-5 ">
         {whislist &&
-          whislist.map((item, index) => {
+          whislist?.map((item, index) => {
             return (
               <div className="w-2/6   max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700" key={index}>
     <Link href="#">
       <Image
                 className="w-full object-contain h-[340px]"
-                src={item.images[0]}
-                alt={item.title}
+                src={item?.images[0]}
+                alt={item?.title}
                 width={340}
+                height={340}
               />
     </Link>
     <div className="px-5 pb-5">
         <a href="#">
-            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{item.title}</h5>
-            <p className="text-sm font-semibold tracking-tight text-gray-500 dark:text-white">{item.description}</p>
+            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{item?.title}</h5>
+            <p className="text-sm font-semibold tracking-tight text-gray-500 dark:text-white">{item?.description}</p>
 
         </a>
         <div className="flex items-center mt-2.5 mb-5">
@@ -79,14 +80,14 @@ alt="images"
             </div>
             <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
         </div>
-        <span className="text-3xl font-bold text-gray-900 dark:text-white">₹{item.price}</span>
+        <span className="text-3xl font-bold text-gray-900 dark:text-white">₹{item?.price}</span>
 
         <div className="flex items-center justify-between mt-2">
             <button   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             onClick={() => Addtocart(item)}
             >Add to cart</button>
              <button   className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            onClick={() =>removeWishlist(item.id)}
+            onClick={() =>removeWishlist(item?.id)}
             >Remove Product</button>
         </div>
     </div>

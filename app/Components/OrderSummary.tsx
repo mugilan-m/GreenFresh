@@ -30,7 +30,8 @@ function OrderSummary({ data }: { data: Product[] }) {
                   Original price
                 </dt>
                 <dd className="text-base font-medium text-gray-900 dark:text-white">
-                ₹{SubTotal}
+                ₹
+                {parseInt((SubTotal ?? "0").toString(),10)}
                 </dd>
               </dl>
 

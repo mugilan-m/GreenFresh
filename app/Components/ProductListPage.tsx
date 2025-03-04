@@ -2,7 +2,7 @@
 
 "use client";
 import React from "react";
-import { Card, CardBody, CardFooter } from "@heroui/react";
+import {  Card, CardBody, CardFooter } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useProductStore } from "../store";
 import toast from "react-hot-toast";
@@ -21,9 +21,9 @@ function ProductListPage(data:any) {
     };
   return (
     <>
-          {data.data.map((item:Product) => (
+          {data.data.map((item:Product,index:number) => (
         <Card
-          key={item.id}
+          key={index}
           isPressable
           shadow="sm"
           
@@ -37,7 +37,8 @@ function ProductListPage(data:any) {
                 className="w-full object-contain h-[340px]"
                 src={item.images[0]}
                 alt={item.title}
-                width="100%"
+                width={340}
+                height={340}
               />
             ) : (
               <div>No Image Available</div>
@@ -123,9 +124,31 @@ function ProductListPage(data:any) {
               </svg>
             )}
           </div>
-
-          <div className="mt-10  gap-10 mb-4">
+          {/* <button
+              // onPress={() => router.push(`/PDP/${item.id}`)}
+              onClick={() => {
+                Addtocart(item);
+                handleButtonClick(item?.title); 
+              
+              }}
+              
+              className="p-2 m-3  rounded-lg bg-green-600 text-white"
+              color="primary"
+            >
+              Add to cart
+            </button>
             <button
+            onClick={() => {
+              addWishlist(item)
+            }}
+              className=" p-2 m-3 rounded-lg mt-4 mb-2 bg-blue-600 text-white"
+              
+            >
+              Add to Wishlist
+            </button> */}
+          {/* <div className="mt-10  gap-10 mb-4">
+<div>
+              <button
               // onPress={() => router.push(`/PDP/${item.id}`)}
               onClick={() => {
                 Addtocart(item);
@@ -138,6 +161,7 @@ function ProductListPage(data:any) {
             >
               Add to cart
             </button>
+</div>
             <button
             onClick={() => {
               addWishlist(item)
@@ -147,7 +171,7 @@ function ProductListPage(data:any) {
             >
               Add to Wishlist
             </button>
-          </div>
+          </div> */}
         </Card>
       ))}
     </>

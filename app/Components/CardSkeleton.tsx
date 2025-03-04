@@ -4,9 +4,7 @@ import { Card, Skeleton } from "@heroui/react";
 import Link from "next/link";
 
 const CardSkeleton = () => {
-  const retString = localStorage?.getItem("ProductData");
-  const retArray = retString ? JSON.parse(retString) : null; 
-  
+  const retArray = ['qwerty','asdfgh','zxcvbn','poiuyt','mnbvcx','lkjhgf','qazwsx','edcrfv','tgbnhy','ujmik','olp','zxcvbn',];  
   console.log("retArray", retArray);
 
   return (
@@ -15,10 +13,10 @@ const CardSkeleton = () => {
     <Link href='/' className="m-5 mb-10 font-serif text-xl font-bold"> Back</Link>
     </div>
   <div className="gap-12 grid grid-cols-2 sm:grid-cols-4">
-  {retArray && retArray.map(( index: number) => (
+  {retArray && retArray.map((item:string ,index: number) => (
               <Card className="w-[350px] space-y-5 p-4" radius="lg" key={index}>
               <Skeleton className="rounded-lg h-[350px]">
-                <div className="h-full w-full rounded-lg bg-default-300" />
+                <div className="h-full w-full rounded-lg bg-default-300" aria-label={item}/>
               </Skeleton>
               <div className="space-y-3">
                 <Skeleton className="w-full rounded-lg h-16">

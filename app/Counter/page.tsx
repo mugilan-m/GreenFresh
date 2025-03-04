@@ -11,36 +11,39 @@ export default function Page() {
    const [todoText, setTodoText] = useState("");
 
     return (
-        <main className="flex flex-col gap-4 items-center justify-center min-h-screen">
-            <h1>
-                enter your todo 
-            </h1>
-            <input type='text' placeholder='enter your todo'  onChange={(e) => setTodoText(e.target.value)}
-        value={todoText}/>
-            <div className="flex gap-2">
-                <button onClick={() => {
-          if (todoText.length) {
-            addTodo(todoText);
-            setTodoText("");
-          }
-        }} className="border border-white p-1.5 font-medium rounded-md">
-                ADD
-                </button>
-                {
-                    todos.map((i,index)=>{
-                        return(
-                            <div key={index} >
-                                <h1>{index}</h1>
-                                <span>{i.description}</span>
-                                <button   onClick={() => {
-                  removeTodo(i.id);
-                }}>remove </button>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        </main>
+        // <main className="flex flex-col gap-4 items-center justify-center min-h-screen">
+        //     <h1>
+        //         enter your todo 
+        //     </h1>
+        //     <input type='text' placeholder='enter your todo'  onChange={(e) => setTodoText(e.target.value)}
+        // value={todoText}/>
+        //     <div className="flex gap-2">
+        //         <button onClick={() => {
+        //   if (todoText.length) {
+        //     addTodo(todoText);
+        //     setTodoText("");
+        //   }
+        // }} className="border border-white p-1.5 font-medium rounded-md">
+        //         ADD
+        //         </button>
+        //         {
+        //             todos.map((i,index)=>{
+        //                 return(
+        //                     <div key={index} >
+        //                         <h1>{index}</h1>
+        //                         <span>{i.description}</span>
+        //                         <button   onClick={() => {
+        //           removeTodo(i.id);
+        //         }}>remove </button>
+        //                     </div>
+        //                 )
+        //             })
+        //         }
+        //     </div>
+        // </main>
+        <div>
+            <h1>Hi User !</h1>
+        </div>
     );
 }
 

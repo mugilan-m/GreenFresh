@@ -44,6 +44,7 @@ function OrderInfo() {
               className="w-[100px] h-[100px]"
               src={item.images[0]}
               alt="Story Book image"
+              width={100} height={100}
             />
             <div className="flex-col justify-start md:items-start items-center gap-1.5 inline-flex">
               <h4 className="text-gray-900 text-xl font-medium leading-8">
