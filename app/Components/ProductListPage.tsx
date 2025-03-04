@@ -4,21 +4,19 @@
 import React from "react";
 import {  Card, CardBody, CardFooter } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { useProductStore } from "../store";
-import toast from "react-hot-toast";
 import { Product } from ".";
 import Image from "next/image";
 function ProductListPage(data:any) {
-    const {  addWishlist,Addtocart} = useProductStore((state) => state);
+    // const {  addWishlist,Addtocart} = useProductStore((state) => state);
     const router = useRouter();
     console.log("ProductListPagedata--->",data.data[0]);
-    const handleButtonClick = (title: string) => {
-      toast.success(`${title}   added to cart `);
+    // const handleButtonClick = (title: string) => {
+    //   toast.success(`${title}   added to cart `);
   
-      setTimeout(() => {
-        router.push("/cart");
-      }, 1000);
-    };
+    //   setTimeout(() => {
+    //     router.push("/cart");
+    //   }, 1000);
+    // };
   return (
     <>
           {data.data.map((item:Product,index:number) => (

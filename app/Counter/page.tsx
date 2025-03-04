@@ -1,14 +1,10 @@
 'use client';
-import { useState } from 'react';
-import { useCountStore } from './_store';
 export default function Page() {
     // Or, we can fetch what we need from the store
     
     // remark below if you don't want to use persist store
-    const { addTodo, removeTodo, todos} = useCountStore((state) => state);
 
    // const store = usePersistStore(useCountStore, (state) => state);
-   const [todoText, setTodoText] = useState("");
 
     return (
         // <main className="flex flex-col gap-4 items-center justify-center min-h-screen">
@@ -42,7 +38,7 @@ export default function Page() {
         //     </div>
         // </main>
         <div>
-            <h1>Hi User !</h1>
+            <h1>Hi user !</h1>
         </div>
     );
 }
