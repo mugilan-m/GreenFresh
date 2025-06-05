@@ -3,10 +3,13 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-
+import { useSession } from "next-auth/react";
+import ProfileDashbord from "./ProfileDashbord";
 function Header() {
-  const loggedin = false;
+  // const loggedin = false;
   const pathname = usePathname();
+  const {data:session}=useSession(); 
+  console.log("session",session);
   const isPage =
     pathname === "/checkout" ||
     pathname === "/Signin" ||
@@ -62,8 +65,9 @@ function Header() {
             </form>
             <Link href="/dashboard">Dashboard</Link>
             <Link href="/Wishlist">Wishlist</Link>
-            {loggedin && loggedin ? (
-              <Link href="/About">My Account</Link>
+            {session && session ? (
+                <ProfileDashbord/>
+
             ) : (
               <Link href="/Signin">
                 <svg

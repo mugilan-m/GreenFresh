@@ -2,34 +2,34 @@
 
 "use client";
 import React from "react";
-import {  Card, CardBody, CardFooter } from "@heroui/react";
+import { Card, CardBody, CardFooter } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import { useProductStore } from "../store";
+import toast from "react-hot-toast";
 import { Product } from ".";
 import Image from "next/image";
-function ProductListPage(data:any) {
-    // const {  addWishlist,Addtocart} = useProductStore((state) => state);
-    const router = useRouter();
-    console.log("ProductListPagedata--->",data.data[0]);
-    // const handleButtonClick = (title: string) => {
-    //   toast.success(`${title}   added to cart `);
-  
-    //   setTimeout(() => {
-    //     router.push("/cart");
-    //   }, 1000);
-    // };
+
+function ProductListPage(data: any) {
+  const { addWishlist, Addtocart } = useProductStore((state) => state);
+  const router = useRouter();
+  console.log("ProductListPagedata--->", data.data[0]);
+
+  const handleButtonClick = (title: string) => {
+    toast.success(`${title} added to cart `);
+
+    setTimeout(() => {
+      router.push("/cart");
+    }, 1000);
+  };
+
   return (
     <>
-          {data.data.map((item:Product,index:number) => (
-        <Card
-          key={index}
-          isPressable
-          shadow="sm"
-          
-        >
-          <CardBody className="overflow-visible p-0 "
-           onClick={() => router.push(`/PDP/${item.id}`)}
+      {data.data.map((item: Product) => (
+        <Card key={item.id} isPressable shadow="sm">
+          <CardBody
+            className="overflow-visible p-0"
+            onClick={() => router.push(`/PDP/${item.id}`)}
           >
-            
             {item.images && item.images.length > 0 ? (
               <Image
                 className="w-full object-contain h-[340px]"
@@ -42,18 +42,19 @@ function ProductListPage(data:any) {
               <div>No Image Available</div>
             )}
           </CardBody>
-          <CardFooter className=" flex items-center justify-center text-small">
-            <h1 className=" text-2xl leading-8  ford-colormoderatek h-16 line-clamp-2 font-semibold"
-            onClick={() => router.push(`/PDP/${item.id}`)}
+          <CardFooter className="flex items-center justify-center text-small">
+            <h1
+              className="text-2xl leading-8 ford-colormoderatek h-16 line-clamp-2 font-semibold"
+              onClick={() => router.push(`/PDP/${item.id}`)}
             >
               {item.title}
             </h1>
           </CardFooter>
-          <span className="font-medium text-2xl leading-8   ml-5">
-          ₹{item.price}
+          <span className="font-medium text-2xl leading-8 ml-5">
+            ₹{item.price}
           </span>
           <div className="flex gap-5">
-            <span className="font-normal text-base leading-6  text-ford-text-moderate(default) ml-5  ">
+            <span className="font-normal text-base leading-6 text-ford-text-moderate(default) ml-5">
               {data.length === 0 ? "Product out of stock" : "Product instock"}
             </span>
             {data.length === 0 ? (
@@ -88,7 +89,7 @@ function ProductListPage(data:any) {
             )}
           </div>
           <div className="flex gap-5">
-            <span className="font-normal text-base leading-6  text-ford-text-moderate(default)  ml-5">
+            <span className="font-normal text-base leading-6 text-ford-text-moderate(default) ml-5">
               Free Shipping available
             </span>
             {data.length === 0 ? (
@@ -122,58 +123,32 @@ function ProductListPage(data:any) {
               </svg>
             )}
           </div>
-          {/* <button
-              // onPress={() => router.push(`/PDP/${item.id}`)}
+
+          <div className="mt-10 gap-3 ml-6 mb-4 flex ">
+            <div
               onClick={() => {
                 Addtocart(item);
-                handleButtonClick(item?.title); 
-              
+                handleButtonClick(item?.title);
               }}
-              
-              className="p-2 m-3  rounded-lg bg-green-600 text-white"
-              color="primary"
+              className="p-2 rounded-lg bg-green-600 text-white cursor-pointer"
+              role="button"
             >
               Add to cart
-            </button>
-            <button
-            onClick={() => {
-              addWishlist(item)
-            }}
-              className=" p-2 m-3 rounded-lg mt-4 mb-2 bg-blue-600 text-white"
-              
-            >
-              Add to Wishlist
-            </button> */}
-          {/* <div className="mt-10  gap-10 mb-4">
-<div>
-              <button
-              // onPress={() => router.push(`/PDP/${item.id}`)}
+            </div>
+            <div
               onClick={() => {
-                Addtocart(item);
-                handleButtonClick(item?.title); 
-              
+                addWishlist(item);
               }}
-              
-              className="p-2  rounded-lg bg-green-600 text-white"
-              color="primary"
-            >
-              Add to cart
-            </button>
-</div>
-            <button
-            onClick={() => {
-              addWishlist(item)
-            }}
-              className=" p-2 rounded-lg ml-10 bg-blue-600 text-white"
-              
+              className="p-2 rounded-lg ml-10 bg-blue-600 text-white cursor-pointer"
+              role="button"
             >
               Add to Wishlist
-            </button>
-          </div> */}
+            </div>
+          </div>
         </Card>
       ))}
     </>
-  )
+  );
 }
 
-export default ProductListPage
+export default ProductListPage;

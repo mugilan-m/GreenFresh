@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import Rating from "@/app/Components/Rating";
+// import Rating from "@/app/Components/Rating";
 import { FaStar } from "react-icons/fa";
 // import Form from "next/form"; //  No such thing
 import { Chip, Input } from "@heroui/react";
@@ -21,7 +21,7 @@ function PDPPage() {
     return <div>Invalid Product ID </div>;
   }
   const productId = parseInt(idString, 10);
-  const retString = localStorage.getItem("ProductData");
+  const retString = localStorage?.getItem("ProductData");
   let products = null;
 
   try {
@@ -252,7 +252,7 @@ function PDPPage() {
           </form>
         </div>
       </div>
-      <Rating />
+      {/* <Rating productid={filteredProducts[0]?.id } /> */}
     </div>
   );
 }

@@ -17,32 +17,7 @@ export default function Productcard({ data }: { data: Product[] }) {
 // const Removequantity =()=>{
 //   alert("removed")
 // }
-if (cartData.length <= 0) {
-  return (
-    <div className="mx-auto container justify-center align-middle">
-      <Link className="bg-blue-400 p-3 rounded-2xl w-25 " href="/ProductPage">
-        Back
-      </Link>
-      <div className="mx-auto container flex  justify-center ">
-        <Image
-          src="https://mir-s3-cdn-cf.behance.net/projects/404/95974e121862329.Y3JvcCw5MjIsNzIxLDAsMTM5.png"
-          className="w-[50%] h-50 rounded-3xl"
-          alt="images"
-          width={50}
-          height={50}
-        />
-      </div>
-      <div className="flex justify-center absolute mt-[-60px] ml-[37%]">
-        <Link
-          href="/ProductPage"
-          className="text-white font-bold ml-2 p-3  rounded-lg  shadow-blue-800 bg-black"
-        >
-          Shop New products 
-        </Link>
-      </div>
-    </div>
-  );
-}
+
 
 
   

@@ -1,8 +1,10 @@
+"use client"
 import Form from 'next/form'
 import Link from 'next/link'
 import React from 'react'
 import { SiginFormData } from '../action'
 import Image from "next/image";
+import { signIn } from "next-auth/react";
 
 function page() {
   return (
@@ -43,8 +45,8 @@ function page() {
               <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create Account</button>
           </Form>
           <div className='flex gap-5 mt-5 w-full'>
-
 <button
+onClick={() => signIn('google',{callbackUrl:'http://localhost:3000'})}
     className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md max-w-xs p-1 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
     <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="-0.5 0 48 48" version="1.1">
@@ -90,7 +92,7 @@ function page() {
     <span >Continue with Apple</span>
 </button>
 </div>
-<p className='flex justify-end m-2'><b className='underline-offset-0 text-red-600'>ForgotPassword</b></p>
+<Link href='/ResetPassword' className='flex justify-end m-2'><b className='underline-offset-0 text-red-600'>ForgotPassword</b></Link>
 
           <p className='mt-5 flex gap-2'>Already have an account <Link href="/Login" className='text-blue-500 hover:underline'>Login</Link></p>
       </div>

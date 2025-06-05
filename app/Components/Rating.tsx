@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
-
-const Rating = () => {
+const Rating = (productid:number) => {
+  const {data:session}=useSession();
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [review, setReview] = useState('');
   const [reviews, setReviews] = useState([
-    { id: 1, rating: 4, text: 'Great album, love the vocals!', user: 'MusicLover123' },
-    { id: 2, rating: 5, text: 'Absolutely stunning. A masterpiece!', user: 'RockFan99' },
-    { id: 3, rating: 3, text: 'Decent, but not their best work.', user: 'CriticGuy' },
+    { id: 1, rating: 4, text: 'Great album, love the vocals!', user: 'MusicLover123', p_id:productid },
+    { id: 2, rating: 5, text: 'Absolutely stunning. A masterpiece!', user: 'RockFan99', p_id:productid  },
+    { id: 3, rating: 3, text: 'Decent, but not their best work.', user: 'CriticGuy' , p_id:productid  },
   ]);
+useEffect(() => {
+  const storedReviews = localStorage.getItem('reviews');
+  if (storedReviews) {
+    setReviews(JSON.parse(storedReviews));
+  }
+}, []);
 
+useEffect(() => {
+  localStorage.setItem('reviews', JSON.stringify(reviews));
+}, [reviews]);
   const handleRatingChange = (currentRating:number) => {
     setRating(currentRating);
   };
@@ -22,7 +32,8 @@ const Rating = () => {
         id: reviews.length + 1,
         rating,
         text: review,
-        user: 'Anonymous', 
+        user: session?.user?.name || 'Anonymous', 
+        p_id:productid 
       };
       setReviews([...reviews, newReview]);
       setRating(0);
